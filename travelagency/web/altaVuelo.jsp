@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Alta Vuelo</title>
+        <title>New flight</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Adding a new flight</h1>
     </body>
 </html>
