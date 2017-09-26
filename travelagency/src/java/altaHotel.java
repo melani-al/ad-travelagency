@@ -6,6 +6,15 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +27,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/altaHotel"})
 public class altaHotel extends HttpServlet {
+    
+    private static final String INSERT_SQL_2 = "INSERT INTO hoteles(id_hotel, nom_hotel, cadena, numb_hab, calle, numero, codigo_postal, ciudad, provincia, pais) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,19 +40,77 @@ public class altaHotel extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet altaHotel</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet altaHotel at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        Connection connection = null;
+        
+        try                        
+        {            
+          // load the sqlite-JDBC driver using the current class loader
+            Class.forName("org.sqlite.JDBC"); 
+            connection = DriverManager.getConnection("jdbc:sqlite:F:\\AD\\ad-lab2\\ad-travelagency\\test");
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);  // set timeout to 30 sec.
+            
+            String hotel,cadena,numH,street,num,postcode,city,state,country;
+            hotel = request.getParameter("nom_hotel");
+            cadena = request.getParameter("cadena");
+            numH = request.getParameter("num_hab");
+            street = request.getParameter("calle");
+            num = request.getParameter("numero");
+            postcode = request.getParameter("codigo_postal");
+            city = request.getParameter("ciudad");
+            state = request.getParameter("provincia");
+            country = request.getParameter("pais");
+            
+            PreparedStatement ps = null;
+            
+            ResultSet rs = statement.executeQuery("select count(*) from hoteles");
+            int next_id = 0;
+            if(rs.next()) {
+                next_id = rs.getInt(1) + 1;
+            }
+            
+            try {
+                ps = connection.prepareStatement(INSERT_SQL_2);
+                ps.setInt(1, next_id);
+                ps.setString(2, hotel);
+                ps.setString(3, cadena);
+                ps.setString(4, numH);
+                ps.setString(5, street);
+                ps.setString(6, num);
+                ps.setString(7, postcode);
+                ps.setString(8, city);
+                ps.setString(9, state);
+                ps.setString(10, country);
+                ps.executeUpdate();
+                response.sendRedirect("menu.jsp");
+                
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+                response.sendRedirect("error.jsp");
+            }
+            
+        }
+        catch(SQLException e)
+        {
+          System.err.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.err.println(e.getMessage());
+        }   
+        finally
+        {
+          try
+          {
+            if(connection != null)
+              connection.close();
+          }
+          catch(SQLException e)
+          {
+            // connection close failed.
+            System.err.println(e.getMessage());
+          }
         }
     }
 
@@ -57,7 +126,13 @@ public class altaHotel extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(altaHotel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(altaHotel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -71,7 +146,13 @@ public class altaHotel extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(altaHotel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(altaHotel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

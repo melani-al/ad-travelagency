@@ -47,7 +47,7 @@ public class login extends HttpServlet {
         {            
           // load the sqlite-JDBC driver using the current class loader
             Class.forName("org.sqlite.JDBC"); 
-            connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Melani\\Desktop\\FIB\\TI\\AD\\LAB1\\ad-travelagency\\test");
+            connection = DriverManager.getConnection("jdbc:sqlite:F:\\AD\\ad-lab2\\ad-travelagency\\test");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
             
@@ -59,21 +59,14 @@ public class login extends HttpServlet {
                 String user = rs.getString("id_usuario");
                 String pwd = rs.getString("password");
                 if(user.equals(request.getParameter("id_usuario")) && pwd.equals(request.getParameter("password"))){
-                    out.println("<!DOCTYPE html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<title>Servlet login</title>");            
-                    out.println("</head>");
-                    out.println("<body>");
-                    out.println("<h1>Servlet login at " + request.getContextPath() + "</h1>");
-                    out.println("</body>");
-                    out.println("</html>");
-                    redirection = "/menu.jsp";
+                    redirection = "menu.jsp";
                 }
                 else {
-                    redirection = "/error.jsp";
+                    redirection = "error.jsp";
                 } 
-                getServletConfig().getServletContext().getRequestDispatcher(redirection).forward(request, response);
+                //sendRedirect
+                response.sendRedirect(redirection);
+                return;
             }             
         }
         catch(SQLException e)
