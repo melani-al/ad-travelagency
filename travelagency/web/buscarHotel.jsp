@@ -14,7 +14,7 @@
     <body>
         <h1>Searching for a Hotel</h1>
         
-         <form action="Search" method="post" accept-charset="UTF-8">
+         <form action="/travelagency/BuscarHotel" method="post" accept-charset="UTF-8">
             <div>
                 <div>
                 </div>

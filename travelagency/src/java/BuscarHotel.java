@@ -44,6 +44,10 @@ public class BuscarHotel extends HttpServlet {
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
             
+            String search = request.getParameter("x");
+            
+            
+            
             
         }
         catch(SQLException e)
