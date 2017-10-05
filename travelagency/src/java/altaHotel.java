@@ -5,8 +5,6 @@
  */
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -48,7 +46,7 @@ public class altaHotel extends HttpServlet {
         {            
           // load the sqlite-JDBC driver using the current class loader
             Class.forName("org.sqlite.JDBC"); 
-            connection = DriverManager.getConnection("jdbc:sqlite:F:\\AD\\ad-lab2\\ad-travelagency\\test");
+            connection = DriverManager.getConnection("jdbc:sqlite:/Users/Celina/Documents/Dokumente - Celinas MacBook Air/Uni/5.Auslandssemester/AD/travelagency/test");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
             
@@ -62,6 +60,10 @@ public class altaHotel extends HttpServlet {
             city = request.getParameter("ciudad");
             state = request.getParameter("provincia");
             country = request.getParameter("pais");
+            
+            String user;
+            user = (String)request.getSession().getAttribute("id");
+            request.setAttribute("user", user);
             
             PreparedStatement ps = null;
             
@@ -84,12 +86,13 @@ public class altaHotel extends HttpServlet {
                 ps.setString(9, state);
                 ps.setString(10, country);
                 ps.executeUpdate();
-                response.sendRedirect("menu.jsp");
+                request.getRequestDispatcher("menu.jsp").forward(request, response);
+                return;
                 
             }
             catch (SQLException e) {
                 e.printStackTrace();
-                response.sendRedirect("error.jsp");
+                request.getRequestDispatcher("error.jsp").forward(request, response);
             }
             
         }

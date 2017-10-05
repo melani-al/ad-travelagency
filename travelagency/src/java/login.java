@@ -47,7 +47,7 @@ public class login extends HttpServlet {
         {            
           // load the sqlite-JDBC driver using the current class loader
             Class.forName("org.sqlite.JDBC"); 
-            connection = DriverManager.getConnection("jdbc:sqlite:F:\\AD\\ad-lab2\\ad-travelagency\\test");
+            connection = DriverManager.getConnection("jdbc:sqlite:/Users/Celina/Documents/Dokumente - Celinas MacBook Air/Uni/5.Auslandssemester/AD/travelagency/test");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
             
@@ -57,15 +57,25 @@ public class login extends HttpServlet {
             {
               // read the result set
                 String user = rs.getString("id_usuario");
+                
                 String pwd = rs.getString("password");
                 if(user.equals(request.getParameter("id_usuario")) && pwd.equals(request.getParameter("password"))){
+                    
+                    request.getSession().setAttribute("id", request.getParameter(user));
+                    
+                    request.setAttribute("user", user);
+                    
                     redirection = "menu.jsp";
+                    
                 }
                 else {
+                    request.setAttribute("lala", user);
+                    
                     redirection = "error.jsp";
                 } 
                 //sendRedirect
-                response.sendRedirect(redirection);
+                //response.sendRedirect(redirection);
+                request.getRequestDispatcher(redirection).forward(request, response);
                 return;
             }             
         }
