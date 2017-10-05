@@ -87,7 +87,6 @@ public class altaHotel extends HttpServlet {
                 ps.setString(10, country);
                 ps.executeUpdate();
                 request.getRequestDispatcher("menu.jsp").forward(request, response);
-                return;
                 
             }
             catch (SQLException e) {

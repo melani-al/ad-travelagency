@@ -13,11 +13,11 @@
         <title>MENU</title>
     </head>
     <body>
-        <h1>This is the menu page, ${user} </h1>
+        <h1>Hola al menu, ${user} </h1>
         <h2>Qué quieres hacer?</h2>
-        <h3> <a href="http://localhost:8080/travelagency/altaVuelo.jsp">Alta vuelo nuevo</a> </h3>
-        <h3> <a href="http://localhost:8080/travelagency/altaHotel.jsp">Alta hotel nuevo</a> </h3>
-        <h3> <a href="http://localhost:8080/travelagency/buscarVuelo.jsp">Busca un vuelo</a> </h3>
-        <h3> <a href="http://localhost:8080/travelagency/buscarHotel.jsp">Busca un hotel</a> </h3>
+        <p> <a href="http://localhost:8080/travelagency/altaVuelo.jsp">Alta vuelo nuevo</a> </p>
+        <p> <a href="http://localhost:8080/travelagency/altaHotel.jsp">Alta hotel nuevo</a> </p>
+        <p> <a href="http://localhost:8080/travelagency/buscarVuelo.jsp">Busca un vuelo</a> </p>
+        <p> <a href="http://localhost:8080/travelagency/buscarHotel.jsp">Busca un hotel</a> </p>
     </body>
 </html>

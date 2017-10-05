@@ -13,5 +13,17 @@
     </head>
     <body>
         <h1>Searching for a Hotel</h1>
+        
+         <form action="Search" method="post" accept-charset="UTF-8">
+            <div>
+                <div>
+                </div>
+                <input type="hidden" name="search_param" value="all" id="search_param"> 
+                <input type="text" class="form-control" name="x" placeholder="Suchbegriff..">
+                <span> 
+                    <input type="submit" id="sign-in" value="search">
+                </span>
+            </div>
+        </form>
     </body>
 </html>
