@@ -44,6 +44,7 @@ public class altaHotel extends HttpServlet {
         
         try                        
         {            
+            request.setAttribute("user", request.getSession().getAttribute("user"));
           // load the sqlite-JDBC driver using the current class loader
             Class.forName("org.sqlite.JDBC"); 
             connection = DriverManager.getConnection("jdbc:sqlite:/Users/Celina/Documents/Dokumente - Celinas MacBook Air/Uni/5.Auslandssemester/AD/travelagency/test");

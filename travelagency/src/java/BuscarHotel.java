@@ -37,7 +37,8 @@ public class BuscarHotel extends HttpServlet {
         Connection connection = null;
         
         try                        
-        {            
+        {      
+            request.setAttribute("user", request.getSession().getAttribute("user"));
           // load the sqlite-JDBC driver using the current class loader
             Class.forName("org.sqlite.JDBC"); 
             connection = java.sql.DriverManager.getConnection("jdbc:sqlite:F:\\AD\\ad-lab2\\ad-travelagency\\test");

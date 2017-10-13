@@ -64,6 +64,7 @@ public class login extends HttpServlet {
                 if(user.equals(request.getParameter("id_usuario")) && pwd.equals(request.getParameter("password"))){
                     
                     request.getSession().setAttribute("id", request.getParameter(user));
+                    request.getSession().setAttribute("user", user);
                     
                     request.setAttribute("user", user);
                     
