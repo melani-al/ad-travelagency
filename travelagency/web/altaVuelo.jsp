@@ -10,37 +10,42 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>New flight</title>
-            <style>
+         <style>
             ul {
                 list-style-type: none;
                 margin: 0;
                 padding: 0;
                 overflow: hidden;
-                background-color: #333;
+                background-color: #f3f3f3;;
             }
 
             li {
-                float: right;
+                float: left;
+                border-right:1px solid #bbb;
+            }
+
+            li:last-child {
+                border-right: none;
             }
 
             li a {
                 display: block;
-                color: white;
+                color: #666;
                 text-align: center;
                 padding: 14px 16px;
                 text-decoration: none;
             }
 
             li a:hover {
-                background-color: #111;
+                background-color: #ddd;
             }
         </style>
     </head>
     <body>
         <ul>
-            <li><a href="http://localhost:8080/travelagency/login.jsp">Log out</a> </li>
-            <li><a href="http://localhost:8080/travelagency/menu.jsp">Menú</a> </li>
             <li><a> Bienvenido/a, ${user}</a></li>
+            <li><a href="http://localhost:8080/travelagency/menu.jsp"> Menú </a> </li>
+            <li style="float:right" ><a href="http://localhost:8080/travelagency/login.jsp">Log out</a> </li>
         </ul>
         <h2>Adding a new flight</h2>
         <form action="/travelagency/altaVuelo" method="POST">
