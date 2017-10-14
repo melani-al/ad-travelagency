@@ -47,7 +47,7 @@ public class altaVuelo extends HttpServlet {
             request.setAttribute("user", request.getSession().getAttribute("user"));
           // load the sqlite-JDBC driver using the current class loader
             Class.forName("org.sqlite.JDBC"); 
-            connection = DriverManager.getConnection("jdbc:sqlite:F:\\AD\\ad-lab2\\ad-travelagency\\test");
+            connection = DriverManager.getConnection("jdbc:sqlite:/Users/Celina/Documents/Dokumente - Celinas MacBook Air/Uni/5.Auslandssemester/AD/travelagency/test");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
                        
@@ -77,17 +77,17 @@ public class altaVuelo extends HttpServlet {
                 ps.setString(7, time_a);
                 ps.executeUpdate();
                 request.getRequestDispatcher("menu.jsp").forward(request, response);                
+                //request.setAttribute("altaVueloError", "true");
+                //request.getRequestDispatcher("error.jsp").forward(request, response);
             }
             catch (SQLException e) {
-                e.printStackTrace();
+                request.setAttribute("altaVueloError", "true");
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             }
         }
-        catch(SQLException e)
+        catch(SQLException | ClassNotFoundException e)
         {
           System.err.println(e.getMessage());
-        } catch (ClassNotFoundException e) {
-            System.err.println(e.getMessage());
         }   
         finally
         {
