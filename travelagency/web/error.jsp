@@ -25,6 +25,12 @@
             <c:when test= "${altaHotelError}">
                 <p>Algo salió mal. ¡Intenta agregar un hotel nuevamente! <a href="/travelagency/altaHotel.jsp" data-toggle="tab">Aqui</a></p>
             </c:when>
+            <c:when test= "${buscarVueloError}">
+                <p>Algo salió mal. ¡Intenta buscar un vuelo nuevamente! <a href="/travelagency/buscarHotel.jsp" data-toggle="tab">Aqui</a></p>
+            </c:when>
+            <c:when test= "${buscarHotelError}">
+                <p>Algo salió mal. ¡Intenta buscar un hotel nuevamente! <a href="/travelagency/buscarHotel.jsp" data-toggle="tab">Aqui</a></p>
+            </c:when>
         </c:choose>
         
     </body>
