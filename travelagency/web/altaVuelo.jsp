@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>New flight</title>
+        <title>Añadir vuelo</title>
          <style>
             ul {
                 list-style-type: none;
@@ -47,19 +47,19 @@
             <li><a href="http://localhost:8080/travelagency/menu.jsp"> Menú </a> </li>
             <li style="float:right" ><a href="http://localhost:8080/travelagency/login.jsp">Log out</a> </li>
         </ul>
-        <h2>Adding a new flight</h2>
+        <h2>Dar de alta nuevo vuelo:</h2>
         <form action="/travelagency/altaVuelo" method="POST">
-            Flight number:<br>
+            Número de vuelo:<br>
             <input type="text" name="num_vuelo" required><br>
-            Airline:<br>
+            Compañia:<br>
             <input type="text" name="companyia" required><br>
-            Origin city:<br>
+            Ciudad de origen:<br>
             <input type="text" name="origen" required><br>
-            Destination city:<br>
+            Ciudad de destino:<br>
             <input type="text" name="destino" required><br>
-            Arrival time:<br>
+            Hora de llegada:<br>
             <input type="text" name="hora_llegada" required><br>
-            Departure time:<br>
+            Hora de salida:<br>
             <input type="text" name="hora_salida" required><br><br>
             <input type="submit" value="Submit">
         </form>

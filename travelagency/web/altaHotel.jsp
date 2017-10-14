@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>New Hotel</title>
+        <title>Añadir Hotel</title>
          <style>
             ul {
                 list-style-type: none;
@@ -47,25 +47,25 @@
             <li><a href="http://localhost:8080/travelagency/menu.jsp"> Menú </a> </li>
             <li style="float:right" ><a href="http://localhost:8080/travelagency/login.jsp">Log out</a> </li>
         </ul>
-        <h2>Adding a new Hotel</h2>
+        <h2>Dar de alta nuevo hotel</h2>
         <form action="/travelagency/altaHotel" method="POST">
-            Hotel name:<br>
+            Nombre del hotel:<br>
             <input type="text" name="nom_hotel" required><br>
-            Chain:<br>
+            Cadena:<br>
             <input type="text" name="cadena" required><br>
-            Room number:<br>
+            Número de habitación:<br>
             <input type="number" name="num_hab" required><br>
-            Street:<br>
+            Calle:<br>
             <input type="text" name="calle" required><br>
-            Number:<br>
+            Número:<br>
             <input type="number" name="numero" required><br>
-            Post Code:<br>
+            Código postal:<br>
             <input type="text" name="codigo_postal" required><br>
-            City:<br>
+            Ciudad:<br>
             <input type="text" name="ciudad" required><br>
-            State:<br>
+            Provincia:<br>
             <input type="text" name="provincia" required><br>
-            Country:<br>
+            País:<br>
             <input type="text" name="pais" required><br><br>
             <input type="submit" value="Submit">
         </form>

@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Search flights</title>
+        <title>Buscador de vuelos</title>
          <style>
             ul {
                 list-style-type: none;
@@ -47,6 +47,6 @@
             <li><a href="http://localhost:8080/travelagency/menu.jsp"> Menú </a> </li>
             <li style="float:right" ><a href="http://localhost:8080/travelagency/login.jsp">Log out</a> </li>
         </ul>
-        <h2>Searching for a flight</h2>
+        <h2>Buscando vuelo</h2>
     </body>
 </html>

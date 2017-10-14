@@ -42,9 +42,9 @@
         </ul>
         
         <form action="/travelagency/login" method="POST">
-        User name:<br>
+        Nombre de usuario:<br>
         <input type="text" name="id_usuario" required><br>
-        Password:<br>
+        Contraseña:<br>
         <input type="password" name="password" required><br><br>
         <input type="submit" value="Submit">
     </form>

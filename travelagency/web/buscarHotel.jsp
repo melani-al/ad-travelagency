@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Search Hotels</title>
+        <title>Buscador de hoteles</title>
          <style>
             ul {
                 list-style-type: none;
@@ -47,7 +47,7 @@
             <li><a href="http://localhost:8080/travelagency/menu.jsp"> Menú </a> </li>
             <li style="float:right" ><a href="http://localhost:8080/travelagency/login.jsp">Log out</a> </li>
         </ul>
-        <h2>Searching for a Hotel</h2>
+        <h2>Buscando hotel</h2>
         
          <form action="/travelagency/BuscarHotel" method="post" accept-charset="UTF-8">
             <div>
