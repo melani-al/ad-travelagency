@@ -51,11 +51,9 @@ public class BuscarHotel extends HttpServlet {
             
             
         }
-        catch(SQLException e)
+        catch(SQLException | ClassNotFoundException e)
         {
           System.err.println(e.getMessage());
-        } catch (ClassNotFoundException e) {
-            System.err.println(e.getMessage());
         }   
         finally
         {

@@ -88,19 +88,16 @@ public class altaHotel extends HttpServlet {
                 ps.setString(10, country);
                 ps.executeUpdate();
                 request.getRequestDispatcher("menu.jsp").forward(request, response);
-                
             }
             catch (SQLException e) {
-                e.printStackTrace();
+                request.setAttribute("altaHotelError", "true"); //Nombre del error
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             }
             
         }
-        catch(SQLException e)
+        catch(SQLException | ClassNotFoundException e)
         {
           System.err.println(e.getMessage());
-        } catch (ClassNotFoundException e) {
-            System.err.println(e.getMessage());
         }   
         finally
         {
