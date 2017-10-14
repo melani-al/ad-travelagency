@@ -4,6 +4,9 @@
     Author     : Melani
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.*"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -48,17 +51,53 @@
             <li style="float:right" ><a href="http://localhost:8080/travelagency/login.jsp">Log out</a> </li>
         </ul>
         <h2>Buscando hotel</h2>
-        
-         <form action="/travelagency/BuscarHotel" method="post" accept-charset="UTF-8">
-            <div>
-                <div>
-                </div>
-                <input type="hidden" name="search_param" value="all" id="search_param"> 
-                <input type="text" class="form-control" name="x" placeholder="Suchbegriff..">
-                <span> 
-                    <input type="submit" id="sign-in" value="search">
-                </span>
-            </div>
+        <%
+                Class.forName("org.sqlite.JDBC");
+                Connection conn =
+                     DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Melani\\Desktop\\FIB\\TI\\AD\\LAB1\\ad-travelagency\\test");
+                Statement stat = conn.createStatement();
+ 
+                ResultSet rs = stat.executeQuery("select * from hoteles;");
+                
+                ArrayList<String> names = new ArrayList<String>();
+                ArrayList<String> chain = new ArrayList<String>();
+                ArrayList<String> city = new ArrayList<String>();
+                
+                while (rs.next()) {
+                    if(!names.contains(rs.getString("nom_hotel"))) names.add(rs.getString("nom_hotel"));
+                    if(!chain.contains(rs.getString("cadena"))) chain.add(rs.getString("cadena"));
+                    if(!city.contains(rs.getString("ciudad"))) city.add(rs.getString("ciudad"));
+                }
+                
+                rs.close();
+                conn.close();
+        %>
+        <form action="/travelagency/BuscarHotel" method="POST">
+            Nombre del hotel:<br>
+            <select name=hotels>
+                <option value="any">< Todos ></option>
+                <%  for(int s=0; s<names.size(); s++) {    %>
+                        <option value="<%=names.get(s)%>"><%=names.get(s)%></option>
+                <% } %>
+            </select>
+            <br><br>
+            Cadena hotelera:<br>
+            <select name=cadenas>
+                <option value="any">< Todas ></option>
+                <%  for(int s=0; s<chain.size(); s++) {    %>
+                        <option value="<%=chain.get(s)%>"><%=chain.get(s)%></option>
+                <% } %>
+            </select>
+            <br><br>
+            Ciudad:<br>
+            <select name=ciudad>
+                <option value="any">< Todas ></option>
+                <%  for(int s=0; s<city.size(); s++) {    %>
+                        <option value="<%=city.get(s)%>"><%=city.get(s)%></option>
+                <% } %>
+            </select>
+            <br><br>
+            <input type="submit" value="Submit">
         </form>
     </body>
 </html>
