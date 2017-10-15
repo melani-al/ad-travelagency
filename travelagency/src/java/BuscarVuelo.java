@@ -114,7 +114,7 @@ public class BuscarVuelo extends HttpServlet {
                 if(!salida.equals("any")) SQL += " AND origen=" + '"' + salida + '"';
                 if(!llegada.equals("any")) SQL += " AND destino=" + '"' + llegada + '"';
             }
-            if(!comp.equals("any")) {
+            else if(!comp.equals("any")) {
                 SQL += " WHERE companyia=" + '"' + comp + '"';
                 if(!salida.equals("any")) SQL += " AND origen=" + '"' + salida + '"';
                 if(!llegada.equals("any")) SQL += " AND destino=" + '"' + llegada + '"';
