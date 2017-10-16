@@ -86,6 +86,8 @@ public class altaVuelo extends HttpServlet {
         catch(SQLException | ClassNotFoundException e)
         {
           System.err.println(e.getMessage());
+          request.setAttribute("altaVueloError", "true"); //Nombre del error
+          request.getRequestDispatcher("error.jsp").forward(request, response);
         }   
         finally
         {

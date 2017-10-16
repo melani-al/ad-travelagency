@@ -47,7 +47,7 @@ public class altaHotel extends HttpServlet {
             request.setAttribute("user", request.getSession().getAttribute("user"));
           // load the sqlite-JDBC driver using the current class loader
             Class.forName("org.sqlite.JDBC"); 
-            connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Melani\\Desktop\\FIB\\TI\\AD\\LAB1\\ad-travelagency\\test");
+            connection = DriverManager.getConnection("jdbc:sqlite::\\Users\\Melani\\Desktop\\FIB\\TI\\AD\\LAB1\\ad-travelagency\\test");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
             
@@ -97,6 +97,8 @@ public class altaHotel extends HttpServlet {
         }
         catch(SQLException | ClassNotFoundException e)
         {
+          request.setAttribute("altaHotelError", "true"); //Nombre del error
+          request.getRequestDispatcher("error.jsp").forward(request, response);
           System.err.println(e.getMessage());
         }   
         finally

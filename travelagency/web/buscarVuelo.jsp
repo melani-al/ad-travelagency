@@ -56,27 +56,52 @@
         </ul>
         <h2>Buscando vuelo</h2>
         <%
-                Class.forName("org.sqlite.JDBC");
-                Connection conn =
-                     DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Melani\\Desktop\\FIB\\TI\\AD\\LAB1\\ad-travelagency\\test");
-                Statement stat = conn.createStatement();
- 
-                ResultSet rs = stat.executeQuery("select * from vuelos;");
-                
+                Connection conn = null;
                 ArrayList<String> num = new ArrayList<String>();
                 ArrayList<String> com = new ArrayList<String>();
                 ArrayList<String> salida = new ArrayList<String>();
                 ArrayList<String> dest = new ArrayList<String>();
                 
-                while (rs.next()) {
-                    if(!num.contains(rs.getString("num_vuelo"))) num.add(rs.getString("num_vuelo"));
-                    if(!com.contains(rs.getString("companyia"))) com.add(rs.getString("companyia"));
-                    if(!salida.contains(rs.getString("origen"))) salida.add(rs.getString("origen"));
-                    if(!dest.contains(rs.getString("destino"))) dest.add(rs.getString("destino"));
+                try {
+                    Class.forName("org.sqlite.JDBC");
+                    conn =
+                         DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Melani\\Desktop\\FIB\\TI\\AD\\LAB1\\ad-travelagency\\test");
+                    Statement stat = conn.createStatement();
+
+                    ResultSet rs = stat.executeQuery("select * from vuelos;");
+
+                    while (rs.next()) {
+                        if(!num.contains(rs.getString("num_vuelo"))) num.add(rs.getString("num_vuelo"));
+                        if(!com.contains(rs.getString("companyia"))) com.add(rs.getString("companyia"));
+                        if(!salida.contains(rs.getString("origen"))) salida.add(rs.getString("origen"));
+                        if(!dest.contains(rs.getString("destino"))) dest.add(rs.getString("destino"));
+                    }
+
+                    rs.close();
+                    conn.close();
                 }
-                
-                rs.close();
-                conn.close();
+                catch(SQLException e)
+                {
+                  System.err.println(e.getMessage());
+                  request.setAttribute("buscarVueloJSPError", "true");
+                  request.getRequestDispatcher("error.jsp").forward(request, response);
+                } catch (ClassNotFoundException e) {
+                    System.err.println(e.getMessage());
+                }
+                finally
+                {
+                  try
+                  {
+                    if(conn != null)
+                      conn.close();
+                  }
+                  catch(SQLException e)
+                  {
+                    // connection close failed.
+                    System.err.println(e.getMessage());
+                  }
+                }
+        
         %>
         <form action="/travelagency/BuscarVuelo" method="POST">
             Número de vuelo:<br>
