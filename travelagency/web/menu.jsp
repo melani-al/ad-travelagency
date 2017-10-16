@@ -46,7 +46,7 @@
         <ul>
             <li><a> Bienvenido/a, ${user}</a></li>
             <li style="float:right; margin-top: 10px; margin-right: 5px">
-                <form action="/logout">
+                <form action="/travelagency/logout">
                 <input type="submit" value="Logout">
                 </form>
             </li>
