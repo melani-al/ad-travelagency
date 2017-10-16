@@ -45,7 +45,11 @@
     <body>
         <ul>
             <li><a> Bienvenido/a, ${user}</a></li>
-            <li style="float:right" ><a href="http://localhost:8080/travelagency/login.jsp">Log out</a> </li>
+            <li style="float:right; margin-top: 10px; margin-right: 5px">
+                <form action="/logout">
+                <input type="submit" value="Logout">
+                </form>
+            </li>
         </ul>
         <h2>¿Qué quieres hacer?</h2>
         <p> <a href="http://localhost:8080/travelagency/altaVuelo.jsp">Alta vuelo nuevo</a> </p>
