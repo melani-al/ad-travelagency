@@ -11,25 +11,26 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--as icon library-->
         <title>ERROR</title>
     </head>
     <body>
-        <h1 style="color: red; ">ERROR</h1>
+        <h1 style="color: red; "><i class="fa fa-bullhorn"></i>  ERROR</h1>
         <c:choose>
             <c:when test="${loginError}">
-                <p>Algo salió mal. ¡Ingrese de nuevo! <a href="/travelagency/login.jsp" data-toggle="tab" style="color:blue">Aqui</a></p>
+                <p>Algo salió mal. ¡Ingrese de nuevo! <a href="/travelagency/login.jsp" data-toggle="tab" style="color:blue"><i class="fa fa-long-arrow-right"></i></a></p>
             </c:when>
             <c:when test= "${altaVueloError}">
-                <p>Algo salió mal. ¡Intenta agregar un vuelo nuevamente! <a href="/travelagency/altaVuelo.jsp" data-toggle="tab">Aqui</a></p>
+                <p>Algo salió mal. ¡Intenta agregar un vuelo nuevamente! <a href="/travelagency/altaVuelo.jsp" data-toggle="tab"><i class="fa fa-long-arrow-right"></i></a></p>
             </c:when>
             <c:when test= "${altaHotelError}">
-                <p>Algo salió mal. ¡Intenta agregar un hotel nuevamente! <a href="/travelagency/altaHotel.jsp" data-toggle="tab">Aqui</a></p>
+                <p>Algo salió mal. ¡Intenta agregar un hotel nuevamente! <a href="/travelagency/altaHotel.jsp" data-toggle="tab"><i class="fa fa-long-arrow-right"></i></a></p>
             </c:when>
             <c:when test= "${buscarVueloError}">
-                <p>Algo salió mal. ¡Intenta buscar un vuelo nuevamente! <a href="/travelagency/buscarHotel.jsp" data-toggle="tab">Aqui</a></p>
+                <p>Algo salió mal. ¡Intenta buscar un vuelo nuevamente! <a href="/travelagency/buscarHotel.jsp" data-toggle="tab"><i class="fa fa-long-arrow-right"></i></a></p>
             </c:when>
             <c:when test= "${buscarHotelError}">
-                <p>Algo salió mal. ¡Intenta buscar un hotel nuevamente! <a href="/travelagency/buscarHotel.jsp" data-toggle="tab">Aqui</a></p>
+                <p>Algo salió mal. ¡Intenta buscar un hotel nuevamente! <a href="/travelagency/buscarHotel.jsp" data-toggle="tab"><i class="fa fa-long-arrow-right"></i></a></p>
             </c:when>
         </c:choose>
         

@@ -48,7 +48,7 @@
         <ul>
             <li><a> Bienvenido/a, ${user}</a></li>
             <li><a href="http://localhost:8080/travelagency/menu.jsp"> Menú </a> </li>
-            li style="float:right; margin-top: 10px; margin-right: 5px">
+            <li style="float:right; margin-top: 10px; margin-right: 5px">
                 <form action="/travelagency/logout">
                 <input type="submit" value="Logout">
                 </form>
