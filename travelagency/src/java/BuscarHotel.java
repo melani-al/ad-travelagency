@@ -92,8 +92,8 @@ public class BuscarHotel extends HttpServlet {
         "        </style></head>");
         out.println("<body> <ul>\n" +
 "            <li><a> Bienvenido/a, " + request.getSession().getAttribute("user") + "</a></li>\n" +
-"            <li><a href=\"http://localhost:8080/travelagency/menu.jsp\"> Menú </a> </li>\n" +
-"            <li style=\"float:right\" ><a href=\"http://localhost:8080/travelagency/login.jsp\">Log out</a> </li>\n" +
+"            <li><a href=\"/travelagency/menu.jsp\"> Menú </a> </li>\n" +
+"            <li style=\"float:right\" ><a href=\"/travelagency/login.jsp\">Log out</a> </li>\n" +
 "        </ul>");
         out.println("<h2>Resultado de tu busqueda para hoteles: </h2>");
         
@@ -157,7 +157,7 @@ public class BuscarHotel extends HttpServlet {
             
             out.println("</table>");
             out.println("<br><br>");
-            out.println("<a>Realizar otra búsqueda: </a><a href=\"http://localhost:8080/travelagency/buscarHotel.jsp\"> buscar hotel </a>");
+            out.println("<a>Realizar otra búsqueda: </a><a href=\"/travelagency/buscarHotel.jsp\"> buscar hotel </a>");
             out.println("</body>");
             out.println("</html>");
             out.close();

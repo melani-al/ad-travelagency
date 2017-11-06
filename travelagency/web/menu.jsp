@@ -52,9 +52,9 @@
             </li>
         </ul>
         <h2>¿Qué quieres hacer?</h2>
-        <p> <a href="http://localhost:8080/travelagency/altaVuelo.jsp">Alta vuelo nuevo</a> </p>
-        <p> <a href="http://localhost:8080/travelagency/altaHotel.jsp">Alta hotel nuevo</a> </p>
-        <p> <a href="http://localhost:8080/travelagency/buscarVuelo.jsp">Busca un vuelo</a> </p>
-        <p> <a href="http://localhost:8080/travelagency/buscarHotel.jsp">Busca un hotel</a> </p>
+        <p> <a href="/travelagency/altaVuelo.jsp">Alta vuelo nuevo</a> </p>
+        <p> <a href="/travelagency/altaHotel.jsp">Alta hotel nuevo</a> </p>
+        <p> <a href="/travelagency/buscarVuelo.jsp">Busca un vuelo</a> </p>
+        <p> <a href="/travelagency/buscarHotel.jsp">Busca un hotel</a> </p>
     </body>
 </html>
