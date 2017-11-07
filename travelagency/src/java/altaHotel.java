@@ -47,20 +47,56 @@ public class altaHotel extends HttpServlet {
             request.setAttribute("user", request.getSession().getAttribute("user"));
           // load the sqlite-JDBC driver using the current class loader
             Class.forName("org.sqlite.JDBC"); 
-            connection = DriverManager.getConnection("jdbc:sqlite::\\Users\\Melani\\Desktop\\FIB\\TI\\AD\\LAB1\\ad-travelagency\\test");
+            connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Melani\\Desktop\\FIB\\TI\\AD\\LAB1\\ad-travelagency\\test");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
             
-            String hotel,cadena,numH,street,num,postcode,city,state,country;
-            hotel = request.getParameter("nom_hotel");
-            cadena = request.getParameter("cadena");
-            numH = request.getParameter("num_hab");
-            street = request.getParameter("calle");
-            num = request.getParameter("numero");
-            postcode = request.getParameter("codigo_postal");
-            city = request.getParameter("ciudad");
-            state = request.getParameter("provincia");
-            country = request.getParameter("pais");
+            String hotel=null,cadena=null,numH=null,street=null,num=null,postcode=null,city=null,state=null,country=null;
+            if(!request.getParameter("nom_hotel").equals(null)) hotel = request.getParameter("nom_hotel");
+            else {
+                request.setAttribute("badParameter", "true"); //Add new error TODO
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            }
+            if(!request.getParameter("cadena").equals(null)) cadena = request.getParameter("cadena");
+            else {
+                request.setAttribute("badParameter", "true"); //Add new error TODO
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            }
+            if(!request.getParameter("num_hab").equals(null)) numH = request.getParameter("num_hab");
+            else {
+                request.setAttribute("badParameter", "true"); //Add new error TODO
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            }
+            if(!request.getParameter("calle").equals(null)) street = request.getParameter("calle");
+            else {
+                request.setAttribute("badParameter", "true"); //Add new error TODO
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            }
+            if(!request.getParameter("numero").equals(null)) num = request.getParameter("numero");
+            else {
+                request.setAttribute("badParameter", "true"); //Add new error TODO
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            }
+            if(!request.getParameter("codigo_postal").equals(null)) postcode = request.getParameter("codigo_postal");
+            else {
+                request.setAttribute("badParameter", "true"); //Add new error TODO
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            }
+            if(!request.getParameter("ciudad").equals(null)) city = request.getParameter("ciudad");
+            else {
+                request.setAttribute("badParameter", "true"); //Add new error TODO
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            }
+            if(!request.getParameter("provincia").equals(null)) state = request.getParameter("provincia");
+            else {
+                request.setAttribute("badParameter", "true"); //Add new error TODO
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            }
+            if(!request.getParameter("pais").equals(null)) country = request.getParameter("pais");
+            else {
+                request.setAttribute("badParameter", "true"); //Add new error TODO
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            }
             
             String user;
             user = (String)request.getSession().getAttribute("id");

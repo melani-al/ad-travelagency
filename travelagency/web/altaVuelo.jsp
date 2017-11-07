@@ -54,7 +54,7 @@
         <h2>Dar de alta nuevo vuelo:</h2>
         <form action="/travelagency/altaVuelo" method="POST">
             Número de vuelo:<br>
-            <input type="text" name="num_vuelo" required><br>
+            <input type="number" name="num_vuelo" required><br>
             Compañia:<br>
             <input type="text" name="companyia" required><br>
             Ciudad de origen:<br>
@@ -62,9 +62,9 @@
             Ciudad de destino:<br>
             <input type="text" name="destino" required><br>
             Hora de llegada:<br>
-            <input type="text" name="hora_llegada" required><br>
+            <input type="text" name="hora_llegada" required><br>  <!-- TODO -->
             Hora de salida:<br>
-            <input type="text" name="hora_salida" required><br><br>
+            <input type="text" name="hora_salida" required><br><br> <!-- TODO -->
             <input type="submit" value="Submit">
         </form>
     </body>
