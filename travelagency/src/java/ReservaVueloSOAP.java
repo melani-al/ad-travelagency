@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.WebServiceRef;
+import org.me.vuelo.VueloWebService_Service;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,17 +21,11 @@ import javax.xml.ws.WebServiceRef;
  * @author Melani
  */
 
-@WebServlet(urlPatterns = {"/ReservaHotelSOAP"})
-public class ReservaHotelSOAP extends HttpServlet {
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/HotelWS/HotelWS.wsdl")
-    private HotelWS_Service service;
-    
-    private Integer booking(java.lang.Integer idHotel, java.lang.Integer fecha) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        hotelws.HotelWS port = service.getHotelWSPort();
-        return port.booking(idHotel, fecha);
-    }
+@WebServlet(urlPatterns = {"/ReservaVueloSOAP"})
+public class ReservaVueloSOAP extends HttpServlet {
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/VueloWebService/VueloWebService.wsdl")
+    private VueloWebService_Service service;
+
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -98,25 +93,25 @@ public class ReservaHotelSOAP extends HttpServlet {
 "            <li style=\"float:right\" ><a href=\"/travelagency/login.jsp\">Log out</a> </li>\n" +
 "        </ul>");
         
-        Integer idH, date, habs;
-        idH = Integer.valueOf(request.getParameter("id_hotel"));
+        Integer idV, date, num;
+        idV = Integer.valueOf(request.getParameter("id_vuelo"));
         date = Integer.valueOf(request.getParameter("fecha"));
-        habs = Integer.valueOf(request.getParameter("habs"));
+        num = Integer.valueOf(request.getParameter("num"));
         
-        if (habs > freeRooms(idH, date)) {
+        if ( num > consuleLibres(idV, date)) {
             request.setAttribute("reservaError", "true");
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
         
         int n = 0;
-        while (n < Integer.valueOf(request.getParameter("habs"))) {
-            booking(idH, date);
+        while (n < Integer.valueOf(request.getParameter("num"))) {
+            reservaPlaza(idV, date);
             ++n;
         }
                
-        out.println("<h2>" + Integer.valueOf(request.getParameter("habs")) + " habitaciones reservadas correctamente. </h2>");
+        out.println("<h2>" + Integer.valueOf(request.getParameter("num")) + " plazas reservadas correctamente. </h2>");
         
-        out.println("<h3>Click <a href=\"/travelagency/reservaHotelSOAP.jsp\"> aquí </a>");
+        out.println("<h3>Click <a href=\"/travelagency/reservaVueloSOAP.jsp\"> aquí </a>");
         out.println(" para hacer otra reserva. </h3>");
     }
 
@@ -160,11 +155,18 @@ public class ReservaHotelSOAP extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private Integer freeRooms(java.lang.Integer idHotel, java.lang.Integer date) {
+    private int reservaPlaza(java.lang.Integer idVuelo, java.lang.Integer fecha) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        hotelws.HotelWS port = service.getHotelWSPort();
-        return port.freeRooms(idHotel, date);
+        org.me.vuelo.VueloWebService port = service.getVueloWebServicePort();
+        return port.reservaPlaza(idVuelo, fecha);
+    }
+
+    private int consuleLibres(java.lang.Integer idVuelo, java.lang.Integer fecha) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        org.me.vuelo.VueloWebService port = service.getVueloWebServicePort();
+        return port.consuleLibres(idVuelo, fecha);
     }
 
 }

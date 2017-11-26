@@ -1,17 +1,16 @@
 <%-- 
-    Document   : menu
-    Created on : 19-sep-2017, 17:10:03
-    Author     : melania.alvarez
+    Document   : consultaVueloSOAP
+    Created on : 26-nov-2017, 19:07:13
+    Author     : Melani
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>MENU</title>
-        <style>
+        <title>Consulta Plazas Vuelo SOAP</title>
+         <style>
             ul {
                 list-style-type: none;
                 margin: 0;
@@ -45,20 +44,21 @@
     <body>
         <ul>
             <li><a> Bienvenido/a, ${user}</a></li>
+            <li><a href="/travelagency/menu.jsp"> Menú </a> </li>
             <li style="float:right; margin-top: 10px; margin-right: 5px">
                 <form action="/travelagency/logout">
                 <input type="submit" value="Logout">
                 </form>
             </li>
         </ul>
-        <h2>¿Qué quieres hacer?</h2>
-        <p> <a href="/travelagency/altaVuelo.jsp">Alta vuelo nuevo</a> </p>
-        <p> <a href="/travelagency/altaHotel.jsp">Alta hotel nuevo</a> </p>
-        <p> <a href="/travelagency/buscarVuelo.jsp">Busca un vuelo</a> </p>
-        <p> <a href="/travelagency/buscarHotel.jsp">Busca un hotel</a> </p>
-        <p> <a href="/travelagency/consultaHotelSOAP.jsp">Habitaciones libres hotel SOAP</a> </p>
-        <p> <a href="/travelagency/reservaHotelSOAP.jsp">Reserva hotel SOAP</a> </p>
-        <p> <a href="/travelagency/consultaVueloSOAP.jsp">Plazas libres vuelo SOAP</a> </p>
-        <p> <a href="/travelagency/reservaVueloSOAP.jsp">Reserva vuelo SOAP</a> </p>
+        <h2>Consulta habitaciones libres: </h2>
+        <form action="/travelagency/ConsultaVueloSOAP" method="GET">
+            Identificador del vuelo:<br>
+            <input type="text" name="id_vuelo" required><br><br>
+            Fecha (YYYYMMDD):<br>
+            <input type="number" name="fecha" required><br><br>
+            <input type="submit" value="Submit">
+        </form>
     </body>
 </html>
+
