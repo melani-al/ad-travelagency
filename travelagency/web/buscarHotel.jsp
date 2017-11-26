@@ -113,7 +113,7 @@
             <select name=cadenas>
                 <option value="any">< Todas ></option>
                 <%  for(int s=0; s<chain.size(); s++) {    %>
-                        <option value="<%=chain.get(s)%>"><%=chain.get(s)%></option>
+                    <option value="<%=chain.get(s)%>"><%=chain.get(s)%></option>
                 <% } %>
             </select>
             <br><br>

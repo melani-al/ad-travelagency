@@ -44,6 +44,9 @@
             <c:when test= "${altaHotelParams}">
                 <p>Algo salió mal en la introducción de parametros. ¡Intenta añadir un vuelo nuevamente! <a href="/travelagency/menu.jsp" data-toggle="tab"><i class="fa fa-long-arrow-right"></i></a></p>
             </c:when>
+            <c:when test= "${reservaError}">
+                <p>No quedan plazas libres para el Hotel en la fecha seleccionada. ¡Intenta hacer otra reserva! <a href="/travelagency/menu.jsp" data-toggle="tab"><i class="fa fa-long-arrow-right"></i></a></p>
+            </c:when>
         </c:choose>
         
     </body>
