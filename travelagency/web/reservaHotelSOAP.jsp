@@ -1,6 +1,4 @@
 <%-- 
-    Document   : reservaHotelSOAP
-    Created on : 26-nov-2017, 18:47:48
     Author     : Melani
 --%>
 
@@ -51,7 +49,7 @@
                 </form>
             </li>
         </ul>
-        <h2>Consulta habitaciones libres: </h2>
+        <h2>Reserva habitaciones libres: </h2>
         <form action="/travelagency/ReservaHotelSOAP" method="GET">
             Identificador del hotel:<br>
             <input type="text" name="id_hotel" required><br><br>

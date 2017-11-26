@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Consulta Plazas Hotel SOAP</title>
+        <title>Consulta plazas Vuelo REST</title>
          <style>
             ul {
                 list-style-type: none;
@@ -49,9 +49,9 @@
             </li>
         </ul>
         <h2>Consulta habitaciones libres: </h2>
-        <form action="/travelagency/ConsultaHotelSOAP" method="GET">
-            Identificador del hotel:<br>
-            <input type="text" name="id_hotel" required><br><br>
+        <form action="/RestAD/webresources/generic/consulta_libres" method="POST">
+            Identificador del avion:<br>
+            <input type="text" name="id_vuelo" required><br><br>
             Fecha (YYYYMMDD):<br>
             <input type="number" name="fecha" required><br><br>
             <input type="submit" value="Submit">

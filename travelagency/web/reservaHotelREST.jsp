@@ -1,12 +1,13 @@
 <%-- 
     Author     : Melani
 --%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Consulta Plazas Hotel SOAP</title>
+        <title>Reserva Plazas Hotel REST</title>
          <style>
             ul {
                 list-style-type: none;
@@ -48,13 +49,13 @@
                 </form>
             </li>
         </ul>
-        <h2>Consulta habitaciones libres: </h2>
-        <form action="/travelagency/ConsultaHotelSOAP" method="GET">
+        <h2>Reserva habitaciones libres: </h2>
+        <form action="/RestAD/webresources/generic/reserva_habitacion" method="post">
             Identificador del hotel:<br>
-            <input type="text" name="id_hotel" required><br><br>
+            <input type="text" name="id_hotel"/><br><br>
             Fecha (YYYYMMDD):<br>
-            <input type="number" name="fecha" required><br><br>
-            <input type="submit" value="Submit">
+            <input type="text" name="fecha"/><br><br>
+            <input type="submit" name="submit" value="Send"/>
         </form>
     </body>
 </html>

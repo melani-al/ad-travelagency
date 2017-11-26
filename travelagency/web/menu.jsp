@@ -60,5 +60,9 @@
         <p> <a href="/travelagency/reservaHotelSOAP.jsp">Reserva hotel SOAP</a> </p>
         <p> <a href="/travelagency/consultaVueloSOAP.jsp">Plazas libres vuelo SOAP</a> </p>
         <p> <a href="/travelagency/reservaVueloSOAP.jsp">Reserva vuelo SOAP</a> </p>
+        <p> <a href="/travelagency/consultaHotelREST.jsp">Habitaciones libres hotel REST</a> </p>
+        <p> <a href="/travelagency/reservaHotelREST.jsp">Reserva hotel REST</a> </p>
+        <p> <a href="/travelagency/consultaVueloREST.jsp">Plazas libres libres vuelo REST</a> </p>
+        <p> <a href="/travelagency/reservaVueloREST.jsp">Reserva vuelo REST</a> </p>
     </body>
 </html>
