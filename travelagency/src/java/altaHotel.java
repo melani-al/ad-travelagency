@@ -51,50 +51,35 @@ public class altaHotel extends HttpServlet {
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
             
-            String hotel=null,cadena=null,numH=null,street=null,num=null,postcode=null,city=null,state=null,country=null;
-            if(!request.getParameter("nom_hotel").equals(null)) hotel = request.getParameter("nom_hotel");
-            else {
-                request.setAttribute("badParameter", "true"); //Add new error TODO
-                request.getRequestDispatcher("error.jsp").forward(request, response);
+            String hotel,cadena,street,city,state,country;
+            Integer numH= null, num = null, postcode = null;
+            hotel = request.getParameter("nom_hotel");
+            cadena = request.getParameter("cadena");
+            try{
+                numH = Integer.valueOf(request.getParameter("num_hab"));
+            } catch (NumberFormatException e) {
+              request.setAttribute("altaHotelParams", "true"); //Nombre del error
+              request.getRequestDispatcher("error.jsp").forward(request, response);
+            }   
+            street = request.getParameter("calle");
+            try{
+                num = Integer.valueOf(request.getParameter("numero"));
+            } catch (NumberFormatException e) {
+              request.setAttribute("altaHotelParams", "true"); //Nombre del error
+              request.getRequestDispatcher("error.jsp").forward(request, response);
             }
-            if(!request.getParameter("cadena").equals(null)) cadena = request.getParameter("cadena");
-            else {
-                request.setAttribute("badParameter", "true"); //Add new error TODO
-                request.getRequestDispatcher("error.jsp").forward(request, response);
+            try{
+                postcode = Integer.valueOf(request.getParameter("codigo_postal"));
+            } catch (NumberFormatException e) {
+              request.setAttribute("altaHotelParams", "true"); //Nombre del error
+              request.getRequestDispatcher("error.jsp").forward(request, response);
             }
-            if(!request.getParameter("num_hab").equals(null)) numH = request.getParameter("num_hab");
-            else {
-                request.setAttribute("badParameter", "true"); //Add new error TODO
-                request.getRequestDispatcher("error.jsp").forward(request, response);
-            }
-            if(!request.getParameter("calle").equals(null)) street = request.getParameter("calle");
-            else {
-                request.setAttribute("badParameter", "true"); //Add new error TODO
-                request.getRequestDispatcher("error.jsp").forward(request, response);
-            }
-            if(!request.getParameter("numero").equals(null)) num = request.getParameter("numero");
-            else {
-                request.setAttribute("badParameter", "true"); //Add new error TODO
-                request.getRequestDispatcher("error.jsp").forward(request, response);
-            }
-            if(!request.getParameter("codigo_postal").equals(null)) postcode = request.getParameter("codigo_postal");
-            else {
-                request.setAttribute("badParameter", "true"); //Add new error TODO
-                request.getRequestDispatcher("error.jsp").forward(request, response);
-            }
-            if(!request.getParameter("ciudad").equals(null)) city = request.getParameter("ciudad");
-            else {
-                request.setAttribute("badParameter", "true"); //Add new error TODO
-                request.getRequestDispatcher("error.jsp").forward(request, response);
-            }
-            if(!request.getParameter("provincia").equals(null)) state = request.getParameter("provincia");
-            else {
-                request.setAttribute("badParameter", "true"); //Add new error TODO
-                request.getRequestDispatcher("error.jsp").forward(request, response);
-            }
-            if(!request.getParameter("pais").equals(null)) country = request.getParameter("pais");
-            else {
-                request.setAttribute("badParameter", "true"); //Add new error TODO
+            city = request.getParameter("ciudad");
+            state = request.getParameter("provincia");
+            country = request.getParameter("pais");
+            
+            if (hotel.equals(null) || cadena.equals(null) || numH.equals(null) || street.equals(null) || num.equals(null) || postcode.equals(null) || city.equals(null) || state.equals(null) || country.equals(null)) {
+                request.setAttribute("altaHotelParams", "true"); //Nombre del error
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             }
             
@@ -115,10 +100,10 @@ public class altaHotel extends HttpServlet {
                 ps.setInt(1, next_id);
                 ps.setString(2, hotel);
                 ps.setString(3, cadena);
-                ps.setString(4, numH);
+                ps.setInt(4, numH);
                 ps.setString(5, street);
-                ps.setString(6, num);
-                ps.setString(7, postcode);
+                ps.setInt(6, num);
+                ps.setInt(7, postcode);
                 ps.setString(8, city);
                 ps.setString(9, state);
                 ps.setString(10, country);

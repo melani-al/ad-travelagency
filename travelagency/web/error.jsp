@@ -35,8 +35,14 @@
             <c:when test= "${buscarVueloJSPError}">
                 <p>Algo salió mal. ¡Intenta buscar un vuelo nuevamente! <a href="/travelagency/menu.jsp" data-toggle="tab"><i class="fa fa-long-arrow-right"></i></a></p>
             </c:when>
-                <c:when test= "${buscarHotelJSPError}">
+            <c:when test= "${buscarHotelJSPError}">
                 <p>Algo salió mal. ¡Intenta buscar un hotel nuevamente! <a href="/travelagency/menu.jsp" data-toggle="tab"><i class="fa fa-long-arrow-right"></i></a></p>
+            </c:when>
+            <c:when test= "${altaVueloParams}">
+                <p>Algo salió mal en la introducción de parametros. ¡Intenta añadir un vuelo nuevamente! <a href="/travelagency/menu.jsp" data-toggle="tab"><i class="fa fa-long-arrow-right"></i></a></p>
+            </c:when>
+            <c:when test= "${altaHotelParams}">
+                <p>Algo salió mal en la introducción de parametros. ¡Intenta añadir un vuelo nuevamente! <a href="/travelagency/menu.jsp" data-toggle="tab"><i class="fa fa-long-arrow-right"></i></a></p>
             </c:when>
         </c:choose>
         

@@ -51,13 +51,33 @@ public class altaVuelo extends HttpServlet {
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
                        
-            String numF, airline, origin, dest, time_a, time_s;
-            numF = request.getParameter("num_vuelo"); 
+            String num, airline, origin, dest;
+            Integer numF = null, time_a = null, time_s = null;
+            try{
+                numF = Integer.valueOf(request.getParameter("num_vuelo")); 
+            } catch (NumberFormatException e) {
+              request.setAttribute("altaVueloParams", "true"); //Nombre del error
+              request.getRequestDispatcher("error.jsp").forward(request, response);
+            }            
             airline = request.getParameter("companyia"); 
             origin = request.getParameter("origen"); 
             dest = request.getParameter("destino"); 
-            time_a = request.getParameter("hora_llegada");
-            time_s = request.getParameter("hora_salida");
+            try{
+                time_a = Integer.valueOf(request.getParameter("hora_llegada"));
+            } catch (NumberFormatException e) {
+              request.setAttribute("altaVueloParams", "true"); //Nombre del error
+              request.getRequestDispatcher("error.jsp").forward(request, response);
+            }   
+            try{
+                time_s = Integer.valueOf(request.getParameter("hora_salida"));
+            } catch (NumberFormatException e) {
+              request.setAttribute("altaVueloParams", "true"); //Nombre del error
+              request.getRequestDispatcher("error.jsp").forward(request, response);
+            } 
+            if (numF.equals(null) || airline.equals(null) || origin.equals(null) || dest.equals(null) || time_a.equals(null) || time_s.equals(null)) {
+                request.setAttribute("altaVueloParams", "true"); //Nombre del error
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            }
             PreparedStatement ps = null;
             
             ResultSet rs = statement.executeQuery("select count(*) from vuelos");
@@ -69,12 +89,12 @@ public class altaVuelo extends HttpServlet {
             try {
                 ps = connection.prepareStatement(INSERT_SQL);
                 ps.setInt(1, next_id);
-                ps.setString(2, numF);
+                ps.setInt(2, numF);
                 ps.setString(3, airline);
                 ps.setString(4, origin);
                 ps.setString(5, dest);
-                ps.setString(6, time_s);
-                ps.setString(7, time_a);
+                ps.setInt(6, time_s);
+                ps.setInt(7, time_a);
                 ps.executeUpdate();
                 request.getRequestDispatcher("menu.jsp").forward(request, response);
             }
